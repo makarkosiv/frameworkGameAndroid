@@ -1,0 +1,37 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+# directories
+.settings/
+.target/
+.idea/
+.worksheet/
+bin/
+build/
+dist/
+logs/
+node_modules/
+out/
+target/
+tmp/
+
+# files
+*.iml
+*/.DS_Store
+\#*
+.cache
+.classpath
+.DS_Store
+.history
+.idea
+.idea_modules
+.project
+RUNNING_PID
+application.log
