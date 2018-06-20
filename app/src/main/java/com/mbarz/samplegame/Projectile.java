@@ -2,6 +2,8 @@ package com.mbarz.samplegame;
 
 import android.graphics.Rect;
 
+import static com.mbarz.samplegame.GameScreen.hbs;
+
 public class Projectile {
     private int x, y, speedX;
     private boolean visible;
@@ -30,15 +32,15 @@ public class Projectile {
     }
 
     private void checkCollision() {
-        for (int i = 0; i < GameScreen.hbs.size(); i++) {
-            Heliboy hb = GameScreen.hbs.get(i);
+        for (int i = 0; i < hbs.size(); i++) {
+            Heliboy hb = hbs.get(i);
             if (Rect.intersects(r, hb.r)) {
                 visible = false;
                 if (hb.health > 0) {
                     hb.health -= 1;
                 }
                 if (hb.health == 0) {
-                    hb.setCenterX(-100);
+                    hbs.remove(i);
                 }
             }
         }

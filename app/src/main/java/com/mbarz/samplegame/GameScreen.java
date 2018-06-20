@@ -23,7 +23,7 @@ public class GameScreen extends Screen {
 
     private static Background bg1, bg2;
     private static Robot robot;
-    public static List<Heliboy> hbs = new ArrayList<>();
+    public static List<Heliboy> hbs;
 
     private Image currentSprite, character, character2, character3, heliboy,
             heliboy2, heliboy3, heliboy4, heliboy5;
@@ -42,10 +42,10 @@ public class GameScreen extends Screen {
         bg1 = new Background(0, 0);
         bg2 = new Background(2160, 0);
         robot = new Robot();
-        hbs.add(new Heliboy(340, 360));
-        hbs.add(new Heliboy(700, 360));
-//        hbs.add(new Heliboy(1060, 360));
-//        hbs.add(new Heliboy(1220, 360));
+        hbs = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            hbs.add(new Heliboy(340 + 360 * i, 360));
+        }
 
         character = Assets.character;
         character2 = Assets.character2;
@@ -231,6 +231,8 @@ public class GameScreen extends Screen {
         // This is where all the game updates happen.
         // For example, robot.update();
         robot.update();
+        bg1.getBgX();
+        bg2.getBgX();
         if (robot.isJumped()) {
             currentSprite = Assets.characterJump;
         } else if (robot.isJumped() == false && robot.isDucked() == false) {
@@ -382,7 +384,7 @@ public class GameScreen extends Screen {
         bg1 = null;
         bg2 = null;
         robot = null;
-        hbs.clear();
+        hbs = null;
         currentSprite = null;
         character = null;
         character2 = null;
