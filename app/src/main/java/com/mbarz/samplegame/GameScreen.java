@@ -23,7 +23,7 @@ public class GameScreen extends Screen {
 
     private static Background bg1, bg2;
     private static Robot robot;
-    public static Heliboy hb, hb2;
+    public static List<Heliboy> hbs = new ArrayList<>();
 
     private Image currentSprite, character, character2, character3, heliboy,
             heliboy2, heliboy3, heliboy4, heliboy5;
@@ -42,8 +42,10 @@ public class GameScreen extends Screen {
         bg1 = new Background(0, 0);
         bg2 = new Background(2160, 0);
         robot = new Robot();
-        hb = new Heliboy(340, 360);
-        hb2 = new Heliboy(700, 360);
+        hbs.add(new Heliboy(340, 360));
+        hbs.add(new Heliboy(700, 360));
+//        hbs.add(new Heliboy(1060, 360));
+//        hbs.add(new Heliboy(1220, 360));
 
         character = Assets.character;
         character2 = Assets.character2;
@@ -246,8 +248,13 @@ public class GameScreen extends Screen {
         }
 
         updateTiles();
-        hb.update();
-        hb2.update();
+        for (int i = 0; i < hbs.size(); i++) {
+            hbs.get(i).update();
+        }
+//        hb.update();
+//        hb2.update();
+//        hb3.update();
+//        hb4.update();
         bg1.update();
         bg2.update();
         animate();
@@ -325,12 +332,17 @@ public class GameScreen extends Screen {
         }
         // First draw the game elements.
 
-        g.drawImage(currentSprite, robot.getCenterX() - 61,
-                robot.getCenterY() - 63);
-        g.drawImage(hanim.getImage(), hb.getCenterX() - 48,
-                hb.getCenterY() - 48);
-        g.drawImage(hanim.getImage(), hb2.getCenterX() - 48,
-                hb2.getCenterY() - 48);
+        g.drawImage(currentSprite, robot.getCenterX() - 61, robot.getCenterY() - 63);
+        for (int i = 0; i < hbs.size(); i++) {
+            Heliboy hb = hbs.get(i);
+            if ((hb.getCenterX() - 48) <= 800) {
+                g.drawImage(hanim.getImage(), hb.getCenterX() - 48, hb.getCenterY() - 48);
+            }
+        }
+//        g.drawImage(hanim.getImage(), hb.getCenterX() - 48, hb.getCenterY() - 48);
+//        g.drawImage(hanim.getImage(), hb2.getCenterX() - 48, hb2.getCenterY() - 48);
+//        g.drawImage(hanim.getImage(), hb3.getCenterX() - 48, hb3.getCenterY() - 48);
+//        g.drawImage(hanim.getImage(), hb4.getCenterX() - 48, hb4.getCenterY() - 48);
 
         // Example:
         // g.drawImage(Assets.background, 0, 0);
@@ -370,8 +382,7 @@ public class GameScreen extends Screen {
         bg1 = null;
         bg2 = null;
         robot = null;
-        hb = null;
-        hb2 = null;
+        hbs.clear();
         currentSprite = null;
         character = null;
         character2 = null;

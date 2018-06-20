@@ -26,7 +26,7 @@ public class Enemy {
 
     private void checkCollision() {
         if (Rect.intersects(r, Robot.rect) || Rect.intersects(r, Robot.rect2) || Rect.intersects(r, Robot.rect3) || Rect.intersects(r, Robot.rect4)){
-
+            robot.setCenterY(501);
         }
     }
 

@@ -30,23 +30,16 @@ public class Projectile {
     }
 
     private void checkCollision() {
-        if(Rect.intersects(r, GameScreen.hb.r)){
-            visible = false;
-            if (GameScreen.hb.health > 0) {
-                GameScreen.hb.health -= 1;
-            }
-            if (GameScreen.hb.health == 0) {
-                GameScreen.hb.setCenterX(-100);
-            }
-        }
-
-        if (Rect.intersects(r, GameScreen.hb2.r)){
-            visible = false;
-            if (GameScreen.hb2.health > 0) {
-                GameScreen.hb2.health -= 1;
-            }
-            if (GameScreen.hb2.health == 0) {
-                GameScreen.hb2.setCenterX(-100);
+        for (int i = 0; i < GameScreen.hbs.size(); i++) {
+            Heliboy hb = GameScreen.hbs.get(i);
+            if (Rect.intersects(r, hb.r)) {
+                visible = false;
+                if (hb.health > 0) {
+                    hb.health -= 1;
+                }
+                if (hb.health == 0) {
+                    hb.setCenterX(-100);
+                }
             }
         }
     }
