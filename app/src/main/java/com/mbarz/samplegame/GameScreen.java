@@ -337,9 +337,7 @@ public class GameScreen extends Screen {
         g.drawImage(currentSprite, robot.getCenterX() - 61, robot.getCenterY() - 63);
         for (int i = 0; i < hbs.size(); i++) {
             Heliboy hb = hbs.get(i);
-            if ((hb.getCenterX() - 48) <= 800) {
-                g.drawImage(hanim.getImage(), hb.getCenterX() - 48, hb.getCenterY() - 48);
-            }
+            g.drawImage(hanim.getImage(), hb.getCenterX() - 48, hb.getCenterY() - 48);
         }
 //        g.drawImage(hanim.getImage(), hb.getCenterX() - 48, hb.getCenterY() - 48);
 //        g.drawImage(hanim.getImage(), hb2.getCenterX() - 48, hb2.getCenterY() - 48);
